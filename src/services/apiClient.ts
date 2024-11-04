@@ -1,14 +1,20 @@
 import axios from 'axios'
 import { parseCookies } from 'nookies'
 
-const { ['moviex.session']: session } = parseCookies()
 const apiClient = axios.create({
   baseURL: process.env.API_URL,
 })
 
-apiClient.interceptors.request.use(config => {
-  if (session) config.headers.Authorization = `Bearer ${session}`
-  return config
-})
+apiClient.interceptors.request.use(
+  config => {
+    const { 'moviex.session': session } = parseCookies()
+    if (session) config.headers.Authorization = `Bearer ${session}`
+
+    return config
+  },
+  error => {
+    return Promise.reject(error)
+  }
+)
 
 export default apiClient

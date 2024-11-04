@@ -13,11 +13,11 @@ interface AuthLayoutProps {
 export default async function AuthLayout({ children }: AuthLayoutProps) {
   return (
     <html lang="en">
-     <body className={`${montserratFont.className} min-h-screen flex items-center justify-center bg-mineshaft`}>
-    <AuthProvider>
-      <NotificationContainer />
-      {children}
-    </AuthProvider>
+      <body className={`${montserratFont.className} min-h-screen flex items-center justify-center bg-mineshaft`}>
+        <AuthProvider>
+          <NotificationContainer />
+          {children}
+        </AuthProvider>
       </body>
     </html>
   )

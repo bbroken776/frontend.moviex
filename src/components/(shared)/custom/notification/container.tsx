@@ -4,17 +4,16 @@ import 'react-toastify/dist/ReactToastify.css'
 const NotificationContainer = () => {
   return (
     <ToastContainer
-      position="bottom-right"
-      autoClose={5000}
+      position="top-right"
+      autoClose={2000}
       hideProgressBar
-      newestOnTop
       closeOnClick
       rtl={false}
       pauseOnFocusLoss
       draggable
       pauseOnHover
       transition={Bounce}
-      stacked
+      theme='dark'
     />
   )
 }

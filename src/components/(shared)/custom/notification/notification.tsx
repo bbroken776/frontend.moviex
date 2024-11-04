@@ -11,7 +11,7 @@ const Notification = ({ message, type = 'DEFAULT' }: NotificationProps) => {
     ERROR: toast.error,
     INFO: toast.info,
     DEFAULT: toast,
-  }[type](message, { className: 'bg-slate-900 text-white' })
+  }[type](message)
 }
 
 export default Notification
