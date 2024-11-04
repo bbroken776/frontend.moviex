@@ -4,10 +4,10 @@ import { destroyCookie, parseCookies, setCookie } from 'nookies'
 import { ReactNode, createContext, useEffect, useState } from 'react'
 
 import Notification from '@components/(shared)/custom/notification/notification'
-import ILoginFormData from '@interfaces/iLogInFormData'
+import ILoginFormData from '@interfaces/iLoginFormData'
+import IRegisterFormData from '@interfaces/iRegisterFormData'
 import IUser from '@interfaces/iUser'
 import apiClient from '@services/apiClient'
-import IRegisterFormData from '@interfaces/iRegisterFormdata'
 
 
 type AuthContextType = {
@@ -15,6 +15,7 @@ type AuthContextType = {
   user: IUser | null
   setUser: (user: IUser | null) => void
   login: (data: ILoginFormData) => Promise<void>
+  register: (data: IRegisterFormData) => Promise<void>
   logout: () => void
   recoverUser: () => void
 }
@@ -33,7 +34,9 @@ function AuthProvider({ children }: { children: ReactNode }) {
   const recoverUser = async (): Promise<void> => {
     await apiClient
       .get('/users/me')
-      .then(r => setUser(r.data))
+      .then(r => {
+        setUser(r.data)
+      })
       .catch((error: any) => {
         setUser(null)
         Notification({ message: error?.response?.data?.message, type: 'ERROR' })
@@ -45,7 +48,8 @@ function AuthProvider({ children }: { children: ReactNode }) {
     .then(r => {
       setUser(r.data.user)
       setCookie(null, "moviex.session", r.data.token, {
-        maxAge: 30 * 24 * 60 * 60
+        maxAge: 30 * 24 * 60 * 60,
+        path: '/'
       })
 
       Notification({message: "You have successfully logged in", type: "SUCCESS"})
@@ -62,7 +66,8 @@ function AuthProvider({ children }: { children: ReactNode }) {
     .then(r => {
       setUser(r.data.user)
       setCookie(null, "moviex.session", r.data.token, {
-        maxAge: 30 * 24 * 60 * 60
+        maxAge: 30 * 24 * 60 * 60,
+         path: '/'
       })
 
       Notification({message: "You have successfully registered", type: "SUCCESS"})
@@ -83,11 +88,12 @@ function AuthProvider({ children }: { children: ReactNode }) {
 
   return (
     <AuthContext.Provider
-      value={{ user, setUser, isAuthenticated, login, logout, recoverUser }}
+      value={{ user, setUser, isAuthenticated, login, register, logout, recoverUser }}
     >
       {children}
     </AuthContext.Provider>
   )
 }
 
-export  { AuthContext, AuthProvider }
+export { AuthContext, AuthProvider }
+

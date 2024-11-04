@@ -6,12 +6,12 @@ import { FaSpinner } from 'react-icons/fa'
 
 import Notification from '@components/(shared)/custom/notification/notification'
 import useAuth from '@hooks/useAuth'
-import ILogInFormData from '@interfaces/iRegisterFormdata'
+import ILogInFormData from '@interfaces/iRegisterFormData'
 import FormGroup from './components/formGroup'
 
 const LoginForm = () => {
   const [isLoading, setLoading] = useState<boolean>(false)
-  const {login} = useAuth();
+  const { login } = useAuth();
 
   const {
     register,
@@ -106,6 +106,16 @@ const LoginForm = () => {
             )}
           </button>
         </form>
+
+        {/* Link to Register */}
+        <div className="mt-4 text-center">
+          <p className="text-gray-300">
+            Don’t have an account yet?{' '}
+            <a href='/auth/register' className="text-amber-400 hover:underline">
+              Register here
+            </a>
+          </p>
+        </div>
       </div>
     </div>
   )
