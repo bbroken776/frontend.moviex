@@ -53,8 +53,7 @@ function AuthProvider({ children }: { children: ReactNode }) {
       })
 
       Notification({message: "You have successfully logged in", type: "SUCCESS"})
-
-      window.location.href = "/"
+      setTimeout(() => window.location.href = "/", 1500)
     })
     .catch((error: any) => {
       Notification({message: error?.response?.data?.message, type: "ERROR"})
@@ -71,8 +70,7 @@ function AuthProvider({ children }: { children: ReactNode }) {
       })
 
       Notification({message: "You have successfully registered", type: "SUCCESS"})
-
-      window.location.href = "/"
+      setTimeout(() => window.location.href = "/", 1500)
     })
     .catch((error: any) => {
       Notification({message: error?.response?.data?.message, type: "ERROR"})

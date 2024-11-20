@@ -1,4 +1,4 @@
-import { Montserrat, Satisfy } from 'next/font/google'
+import { Montserrat, Satisfy, Moul, Krub } from 'next/font/google'
 
 const montserratFont = Montserrat({ subsets: ['latin'] })
 
@@ -9,4 +9,18 @@ const satisfyFont = Satisfy({
   preload: true,
 })
 
-export { montserratFont, satisfyFont }
+const moulFont = Moul({
+  weight: '400',
+  style: 'normal',
+  subsets: ['latin'],
+  preload: true,
+})
+
+const krubFont = Krub({
+  weight: '400',
+  style: 'normal',
+  subsets: ['latin'],
+  preload: true,
+})
+
+export { montserratFont, satisfyFont, moulFont, krubFont }
