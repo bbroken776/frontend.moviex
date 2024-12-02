@@ -6,10 +6,10 @@ import Container from '@components/(shared)/custom/container'
 import Logo from '@components/(shared)/logo'
 
 import NavbarLinkList from './components/navbarLinkList'
-import NavbarToggleButton from './components/navbarMobileToggleButton'
+import NavbarToggleButton from './components/mobile/mobileToggleButton'
 
-import NavbarProfile from './components/navbarProfile'
-import NavbarMobileView from './components/navbarMobileView'
+import Profile from './components/profile/profile'
+import NavbarMobileView from './components/mobile/mobileView'
 
 const Navbar = () => {
   const [isOpen, setOpen] = useState<boolean>(false)
@@ -19,11 +19,11 @@ const Navbar = () => {
       <div className="bg-mineshaft-900">
         <Container className="flex justify-between items-center py-10">
           <div className="w-full md:w-fit flex justify-between items-center">
-            <Logo />
+            <a  href='/'><Logo /></a>
             <NavbarToggleButton isOpen={isOpen} setOpen={setOpen} />
             <NavbarLinkList />
           </div>
-          <NavbarProfile />
+          <Profile />
         </Container>
       </div>
 

@@ -1,9 +1,9 @@
 import type { Metadata, Viewport } from 'next';
 import { ReactNode } from 'react';
 
+import ProtectedClient from '@components/(shared)/protectedclient';
 import { montserratFont } from '@utils/fonts';
 import '@styles/globals.css';
-import ProtectedClient from '@components/(shared)/protectedclient';
 
 interface BaseLayoutProps {
   children: ReactNode;
@@ -12,11 +12,13 @@ interface BaseLayoutProps {
 export default async function BaseLayout({ children }: BaseLayoutProps) {
   return (
     <ProtectedClient>
-      <html lang="en">
-        <body className={`${montserratFont.className} min-h-screen flex flex-col bg-mineshaft`}>
-          {children}
-        </body>
-      </html>
+        <html lang="en">
+          <body
+            className={`${montserratFont.className} min-h-screen flex flex-col bg-mineshaft`}
+          >
+            {children}
+          </body>
+        </html>
     </ProtectedClient>
   )
 }

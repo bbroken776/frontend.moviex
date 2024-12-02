@@ -5,23 +5,10 @@ import { useState } from 'react'
 import useAuth from '@hooks/useAuth'
 import IUser from '@interfaces/iUser'
 import { BiSolidChevronDown } from 'react-icons/bi'
+import ProfileDetails from '../profile/profileDetails'
+import MobileProfileLinkList from './mobileProfileLinkList'
 
-const ProfileDetails = ({ user }: { user: IUser }) => {
-  const initials = user.firstName[0] + user.lastName[0]
-
-  return (
-    <div className="flex items-center gap-2">
-      <div className="bg-amber-400 rounded-lg px-2 py-1">
-        <span className="font-bold text-mineshaft-900">{initials}</span>
-      </div>
-      <span className="text-zinc-100 font-bold whitespace-nowrap">
-        {user.firstName} {user.lastName}
-      </span>
-    </div>
-  )
-}
-
-const NavbarMobileProfile = () => {
+const MobileProfile = () => {
   const { isAuthenticated, user, logout } = useAuth()
 
   const [isDropdownOpen, setDropdownOpen] = useState(false)
@@ -30,7 +17,7 @@ const NavbarMobileProfile = () => {
   const closeDropdown = () => setDropdownOpen(false)
 
   return (
-    <div className="ml-10 mt-10 w-full">
+    <div className="ml-10 mt-10 w-[85%]">
       {isAuthenticated ? (
         <div
           className="flex items-center cursor-pointer gap-4"
@@ -54,18 +41,9 @@ const NavbarMobileProfile = () => {
       <div
         className={`ml-8 transition-max-height duration-300 overflow-hidden ${isDropdownOpen ? 'max-h-40 py-2' : 'max-h-0'}`}
       >
-        <ul className="flex flex-col">
-          <li className="px-4 py-2 hover:bg-zinc-700">
-            <a href="/profile" className="text-zinc-100">
-              Profile
-            </a>
-          </li>
-          <li className="px-4 py-2 hover:bg-zinc-700">
-            <a href="/settings" className="text-zinc-100">
-              Settings
-            </a>
-          </li>
-          <li className="px-4 py-2 border-1 border-red-400 bg-red-400/20">
+        <ul className="flex flex-col space-y-2">
+         <MobileProfileLinkList />
+         <li className="px-4 py-2 border-[1px] border-red-400 bg-red-400/30 rounded-lg hover:bg-red-400 hover:font-bold">
             <button
               onClick={() => {
                 closeDropdown()
@@ -82,4 +60,4 @@ const NavbarMobileProfile = () => {
   )
 }
 
-export default NavbarMobileProfile
+export default MobileProfile

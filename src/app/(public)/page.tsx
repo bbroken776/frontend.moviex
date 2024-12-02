@@ -1,3 +1,9 @@
+import LandingPresentation from '@components/public/landing/presentation'
+
 export default function HomePage() {
-    return <><h1>Teste</h1></>
+  return (
+    <>
+      <LandingPresentation/>
+    </>
+  )
 }
