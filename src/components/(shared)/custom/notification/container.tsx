@@ -1,5 +1,5 @@
-import { Bounce, ToastContainer } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
+import { Bounce, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const NotificationContainer = () => {
   return (
@@ -13,9 +13,9 @@ const NotificationContainer = () => {
       draggable
       pauseOnHover
       transition={Bounce}
-      theme='dark'
+      theme="dark"
     />
-  )
-}
+  );
+};
 
-export default NotificationContainer
+export default NotificationContainer;

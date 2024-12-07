@@ -1,6 +1,6 @@
 interface LinkProps {
-  title: string
-  route: string
+  title: string;
+  route: string;
 }
 
 const MobileLink = ({ title, route }: LinkProps) => {
@@ -11,7 +11,7 @@ const MobileLink = ({ title, route }: LinkProps) => {
     >
       {title}
     </a>
-  )
-}
+  );
+};
 
-export default MobileLink
+export default MobileLink;

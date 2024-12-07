@@ -12,15 +12,11 @@ interface BaseLayoutProps {
 export default async function BaseLayout({ children }: BaseLayoutProps) {
   return (
     <ProtectedClient>
-        <html lang="en">
-          <body
-            className={`${montserratFont.className} min-h-screen flex flex-col bg-mineshaft`}
-          >
-            {children}
-          </body>
-        </html>
+      <html lang="en">
+        <body className={`${montserratFont.className} min-h-screen flex flex-col bg-mineshaft`}>{children}</body>
+      </html>
     </ProtectedClient>
-  )
+  );
 }
 
 export const viewport: Viewport = {
@@ -32,8 +28,10 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: 'MovieX Online Streaming | MovieX | Watch Movies Online',
-  description: 'Enjoy your life with the best streaming content available online! Watch movies, TV shows, and exclusive content on MovieX.',
-  keywords: 'movies, streaming, watch online, TV shows, free movies, MovieX, exclusive content, HD streaming, online entertainment, popular movies',
+  description:
+    'Enjoy your life with the best streaming content available online! Watch movies, TV shows, and exclusive content on MovieX.',
+  keywords:
+    'movies, streaming, watch online, TV shows, free movies, MovieX, exclusive content, HD streaming, online entertainment, popular movies',
   authors: [{ name: 'ArchKode', url: 'https://archkode.pt' }],
   robots: 'index, nofollow',
   icons: ['/logo.png'],

@@ -1,50 +1,64 @@
-import { CSSProperties, ReactNode } from 'react'
+import { CSSProperties, ReactNode } from 'react';
+import clsx from 'clsx';
 
 interface PixelatedContainerProps {
-  borderColor?: string
-  borderTColor?: string
-  borderBColor?: string
-  borderLColor?: string
-  borderRColor?: string
-  borderBackground?: string
-  background?: string
-  className?: string
-  style?: CSSProperties
-  children?: ReactNode
+  borderClasses?: string;
+  className?: string;
+  style?: CSSProperties;
+  children?: ReactNode;
 }
 
 const PixelatedContainer = ({
-  borderColor = 'border-orange-500',
-  borderTColor = 'border-t-orange-500',
-  borderBColor = 'border-b-orange-500',
-  borderLColor = 'border-l-orange-500',
-  borderRColor = 'border-r-orange-500',
-  borderBackground = 'bg-zinc-800',
-  background = 'bg-zinc-800',
+  borderClasses = 'border-amber-500 border-t-amber-500 border-b-amber-500 border-l-amber-500 border-r-amber-500 bg-zinc-800',
   className = 'h-fit',
   style,
   children,
 }: PixelatedContainerProps) => {
+  const splitClasses = borderClasses.split(' ');
+
+  const getClass = (side: string, defaultClass: string) => {
+    const className = splitClasses.find(cls => cls.includes(side));
+    return className || defaultClass;
+  };
+
+  const containerClass = clsx(
+    'relative inline-block border px-3 py-2',
+    getClass('border', 'border-amber-500'),
+    getClass('bg', 'bg-zinc-800'),
+    className,
+  );
+  const cornerClass = (position: string, borderClasses: string) =>
+    clsx('absolute w-[7px] h-[7px] border', position, borderClasses);
+
   return (
-    <div
-      className={`w-fit relative ${className} px-3 py-2 border ${borderColor} ${background}`}
-      style={style}
-    >
+    <div className={containerClass} style={style}>
       <div
-        className={`absolute -top-[1px] -left-[1px] w-[7px] h-[7px] border ${borderRColor} ${borderBColor} border-t-transparent border-l-transparent ${borderBackground}`}
+        className={cornerClass(
+          '-top-[1px] -left-[1px]',
+          `${getClass('border-r', 'border-r-amber-500')} ${getClass('border-b', 'border-b-amber-500')} border-t-transparent border-l-transparent`,
+        )}
       />
       <div
-        className={`absolute -bottom-[1px] -left-[1px] w-[7px] h-[7px] border ${borderRColor} ${borderTColor} border-l-transparent border-b-transparent ${borderBackground}`}
+        className={cornerClass(
+          '-bottom-[1px] -left-[1px]',
+          `${getClass('border-r', 'border-r-amber-500')} ${getClass('border-t', 'border-t-amber-500')} border-b-transparent border-l-transparent`,
+        )}
       />
-      {children != null && children}
+      {children}
       <div
-        className={`absolute -top-[1px] -right-[1px] w-[7px] h-[7px] border ${borderLColor} ${borderBColor} border-t-transparent border-r-transparent ${borderBackground}`}
+        className={cornerClass(
+          '-top-[1px] -right-[1px]',
+          `${getClass('border-l', 'border-l-amber-500')} ${getClass('border-b', 'border-b-amber-500')} border-t-transparent border-r-transparent`,
+        )}
       />
       <div
-        className={`absolute -bottom-[1px] -right-[1px] w-[7px] h-[7px] border ${borderLColor} ${borderTColor} border-b-transparent border-r-transparent ${borderBackground}`}
+        className={cornerClass(
+          '-bottom-[1px] -right-[1px]',
+          `${getClass('border-l', 'border-l-amber-500')} ${getClass('border-t', 'border-t-amber-500')} border-b-transparent border-r-transparent`,
+        )}
       />
     </div>
-  )
-}
+  );
+};
 
-export default PixelatedContainer
+export default PixelatedContainer;

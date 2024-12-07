@@ -1,12 +1,12 @@
-import type { Metadata } from 'next'
-import { ReactNode } from 'react'
+import type { Metadata } from 'next';
+import { ReactNode } from 'react';
 
-import NotificationContainer from '@components/(shared)/custom/notification/container'
-import { AuthProvider } from '@contexts/authContext'
-import 'react-toastify/dist/ReactToastify.css'
+import NotificationContainer from '@components/(shared)/custom/notification/container';
+import { AuthProvider } from '@contexts/authContext';
+import 'react-toastify/dist/ReactToastify.css';
 
 interface AuthLayoutProps {
-  children: ReactNode
+  children: ReactNode;
 }
 
 export default async function AuthLayout({ children }: AuthLayoutProps) {
@@ -17,16 +17,14 @@ export default async function AuthLayout({ children }: AuthLayoutProps) {
         {children}
       </AuthProvider>
     </div>
-  )
+  );
 }
 
 export const metadata: Metadata = {
   title: 'Authentication | MovieX Online Streaming',
-  description:
-    'Login or register to access the best streaming content available online!',
-  keywords:
-    'login, register, authentication, MovieX, streaming access, secure login, create account',
+  description: 'Login or register to access the best streaming content available online!',
+  keywords: 'login, register, authentication, MovieX, streaming access, secure login, create account',
   authors: [{ name: 'ArchKode', url: 'https://archkode.pt' }],
   robots: 'noindex, nofollow',
   icons: ['/logo.png'],
-}
+};

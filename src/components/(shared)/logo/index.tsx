@@ -1,4 +1,4 @@
-import { krubFont, moulFont } from '@utils/fonts'
+import { krubFont, moulFont } from '@utils/fonts';
 
 const Logo = () => {
   return (
@@ -6,7 +6,7 @@ const Logo = () => {
       <span className={`${krubFont.className} absolute text-8xl text-zinc-100`}>X</span>
       <h1 className={`${moulFont.className} text-4xl text-amber-400 z-[1]`}>MOVIE</h1>
     </div>
-  )
-}
+  );
+};
 
-export default Logo
+export default Logo;

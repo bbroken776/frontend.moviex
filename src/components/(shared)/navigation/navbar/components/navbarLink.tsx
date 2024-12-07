@@ -1,6 +1,6 @@
 interface NavbarLinkProps {
-  title: string
-  route: string
+  title: string;
+  route: string;
 }
 
 const NavbarLink = ({ title, route }: NavbarLinkProps) => {
@@ -11,7 +11,7 @@ const NavbarLink = ({ title, route }: NavbarLinkProps) => {
     >
       {title}
     </a>
-  )
-}
+  );
+};
 
-export default NavbarLink
+export default NavbarLink;

@@ -1,20 +1,20 @@
-import axios from 'axios'
-import { parseCookies } from 'nookies'
+import axios from 'axios';
+import { parseCookies } from 'nookies';
 
 const apiClient = axios.create({
   baseURL: process.env.API_URL,
-})
+});
 
 apiClient.interceptors.request.use(
   config => {
-    const { 'moviex.session': session } = parseCookies()
-    if (session) config.headers.Authorization = `Bearer ${session}`
+    const { 'moviex.session': session } = parseCookies();
+    if (session) config.headers.Authorization = `Bearer ${session}`;
 
-    return config
+    return config;
   },
   error => {
-    return Promise.reject(error)
-  }
-)
+    return Promise.reject(error);
+  },
+);
 
-export default apiClient
+export default apiClient;

@@ -1,9 +1,9 @@
-import { toast } from 'react-toastify'
+import { toast } from 'react-toastify';
 
 type NotificationProps = {
-  message: string
-  type?: 'SUCCESS' | 'ERROR' | 'INFO' | 'DEFAULT'
-}
+  message: string;
+  type?: 'SUCCESS' | 'ERROR' | 'INFO' | 'DEFAULT';
+};
 
 const Notification = ({ message, type = 'DEFAULT' }: NotificationProps) => {
   return {
@@ -11,7 +11,7 @@ const Notification = ({ message, type = 'DEFAULT' }: NotificationProps) => {
     ERROR: toast.error,
     INFO: toast.info,
     DEFAULT: toast,
-  }[type](message)
-}
+  }[type](message);
+};
 
-export default Notification
+export default Notification;

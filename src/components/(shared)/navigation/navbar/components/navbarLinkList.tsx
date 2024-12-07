@@ -1,6 +1,6 @@
-import NavbarLink from './navbarLink'
+import NavbarLink from './navbarLink';
 
-import navbarConfig from '@configs/navbar.config'
+import navbarConfig from '@configs/navbar.config';
 
 const NavbarLinkList = () => {
   return (
@@ -13,7 +13,7 @@ const NavbarLinkList = () => {
         ))}
       </ul>
     </nav>
-  )
-}
+  );
+};
 
-export default NavbarLinkList
+export default NavbarLinkList;

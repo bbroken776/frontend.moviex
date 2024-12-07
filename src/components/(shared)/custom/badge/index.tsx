@@ -1,23 +1,17 @@
-import { ReactNode } from 'react'
+import { ReactNode } from 'react';
+import clsx from 'clsx';
 
 interface BadgeProps {
-  className?: string
-  children: ReactNode
-  preserveDefaultClassName?: boolean
+  className?: string;
+  children: ReactNode;
+  preserveDefaultClassName?: boolean;
 }
 
-const defaultClassName = 'w-fit h-fit text-[11px] text-pink-400 bg-pink-400/10 rounded-full py-[1px] px-2'
+const Badge = ({ className, children }: BadgeProps) => {
+  const defaultClassName = 'w-fit h-fit text-[11px] text-amber-400 bg-amber-400/10 rounded py-[1px] px-2';
+  const finalClassName = clsx(defaultClassName, className);
+  
+  return <span className={finalClassName}>{children}</span>;
+};
 
-const Badge = ({
-  className,
-  children,
-  preserveDefaultClassName = true,
-}: BadgeProps) => {
-  const finalClassName = preserveDefaultClassName
-    ? defaultClassName + ' ' + className
-    : className
-
-  return <span className={finalClassName}>{children}</span>
-}
-
-export default Badge
+export default Badge;

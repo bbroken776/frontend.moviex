@@ -1,5 +1,5 @@
-import navbarConfig from '@configs/navbar.config'
-import MobileLink from './mobileLink'
+import navbarConfig from '@configs/navbar.config';
+import MobileLink from './mobileLink';
 
 const MobileLinkList = () => {
   return (
@@ -12,7 +12,7 @@ const MobileLinkList = () => {
         ))}
       </ul>
     </nav>
-  )
-}
+  );
+};
 
-export default MobileLinkList
+export default MobileLinkList;
