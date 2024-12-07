@@ -3,13 +3,13 @@
 import { useEffect, useState } from 'react';
 
 import Container from '@components/(shared)/custom/container';
-import MoviesDisplay from '@components/public/movies/moviesDisplay';
-import MoviesDisplayPagination from '@components/public/movies/moviesDisplayPagination';
-import MoviesDisplayFilter from '@components/public/movies/moviesDisplayFilter';
+import MoviesDisplayPagination from '@components/public/movies/display/components/moviesDisplayPagination';
+import MoviesDisplayFilter from '@components/public/movies/display/components/moviesDisplayFilter';
 
 import useDebounce from '@hooks/useDebounce';
 import IMovie from '@interfaces/iMovie';
 import apiServer from '@services/apiServer';
+import MoviesDisplay from '@components/public/movies/display';
 
 const GENRES = [
   'Action',

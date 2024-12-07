@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { ReactNode } from 'react';
 
-import NotificationContainer from '@components/(shared)/custom/notification/container';
 import { AuthProvider } from '@contexts/authContext';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -12,10 +11,7 @@ interface AuthLayoutProps {
 export default async function AuthLayout({ children }: AuthLayoutProps) {
   return (
     <div className="min-w-screen min-h-screen flex flex-col items-center justify-center">
-      <AuthProvider>
-        <NotificationContainer />
-        {children}
-      </AuthProvider>
+      <AuthProvider>{children}</AuthProvider>
     </div>
   );
 }

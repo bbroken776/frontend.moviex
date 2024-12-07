@@ -4,8 +4,8 @@ const config = {
     { title: 'Movies', route: '/movies' },
   ],
   userLinks: [
-    { title: 'Profile', route: '/profile' },
-    { title: 'Settings', route: '/settings' },
+    { title: 'Profile', route: '/me/profile' },
+    { title: 'Settings', route: '/me/settings' },
   ],
   adminLinks: [
     { title: 'Dashboard', route: '/admin/dashboard' },

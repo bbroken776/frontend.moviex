@@ -45,7 +45,7 @@ const MoviesDisplayFilter = ({
 
         <div className="flex flex-col justify-center">
           <select
-                    className="text-zinc-100 bg-transparent p-2 rounded outline-none"
+            className="text-zinc-100 bg-transparent p-2 rounded outline-none"
             value={genre}
             onChange={e => setGenre(e.target.value)}
           >
@@ -87,7 +87,6 @@ const MoviesDisplayFilter = ({
           Newest
         </button>
       </div>
-
     </div>
   );
 };
