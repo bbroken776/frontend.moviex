@@ -81,8 +81,7 @@ const LoginForm = () => {
 
           <button
             type="submit"
-            disabled={isLoading}
-            className="w-full py-3 font-medium text-white rounded bg-amber-500/80 hover:bg-amber-500/90 transition-all duration-200 shadow-md flex items-center justify-center gap-2"
+            className={`w-full py-3 font-medium text-white rounded bg-amber-500/80 hover:bg-amber-500/90 transition-all duration-200 shadow-md flex items-center justify-center gap-2 ${isLoading && "disabled"}`}
           >
             {isLoading ? (
               <>
@@ -95,7 +94,6 @@ const LoginForm = () => {
           </button>
         </form>
 
-        {/* Link to Register */}
         <div className="mt-4 text-center">
           <p className="text-gray-300">
             Don’t have an account yet?{' '}

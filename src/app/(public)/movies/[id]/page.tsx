@@ -1,9 +1,10 @@
-"use client"
+'use client';
 
 import { useEffect, useState } from 'react';
 
 import Container from '@components/(shared)/custom/container';
 import Notification from '@components/(shared)/custom/notification/notification';
+
 import MovieBanner from '@components/public/movies/movie/movieBanner';
 import MovieInfo from '@components/public/movies/movie/movieInfo';
 import MoviePlayer from '@components/public/movies/movie/moviePlayer';
@@ -20,6 +21,11 @@ export default function MoviePage({ params }: { params: { id: string } }) {
   const [isLoading, setLoading] = useState<boolean>(true);
   const [likes, setLikes] = useState<number>(0);
   const [showVideo, setShowVideo] = useState<boolean>(false);
+
+  const handleShowVideo = () => {
+    if (user != null) setShowVideo(prevState => !prevState);
+    else Notification({ message: 'You must be logged in to watch the movie', type: 'ERROR' });
+  };
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -78,7 +84,7 @@ export default function MoviePage({ params }: { params: { id: string } }) {
               likes={likes}
               onLike={handleLike}
               toggledVideo={showVideo}
-              onToggleVideo={() => setShowVideo(prev => !prev)}
+              onToggleVideo={handleShowVideo}
             />
           </MovieBanner>
           {showVideo && <MoviePlayer source={movie.source} />}

@@ -1,6 +1,8 @@
-import Container from '@components/(shared)/custom/container';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect } from 'react';
+
+import Container from '@components/(shared)/custom/container';
+
 import MobileLinkList from './mobileLinkList';
 import MobileProfile from './mobileProfile';
 
@@ -10,8 +12,6 @@ interface MobileViewProps {
 }
 
 const MobileView = ({ isOpen, setOpen }: MobileViewProps) => {
-  const handleStatus = () => setOpen(!isOpen);
-
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -25,7 +25,6 @@ const MobileView = ({ isOpen, setOpen }: MobileViewProps) => {
       {isOpen && (
         <motion.div
           className="md:hidden absolute top-0 left-0 w-full h-screen bg-mineshaft-900 z-[99999]"
-          //          onClick={handleStatus}
           initial={{ x: '-100%', y: 130 }}
           animate={{ x: 0, y: 130 }}
           exit={{ x: '-100%', y: 130 }}

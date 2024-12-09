@@ -6,7 +6,7 @@ interface MoviePlayerProps {
 
 const MoviePlayer = ({ source }: MoviePlayerProps) => (
   <div className="w-full px-6">
-    <div className="w-full max-w-6xl mx-auto bg-black/50 rounded-lg shadow-md animate-slide-up">
+    <div className="w-full max-w-6xl mx-auto bg-black/50 rounded shadow-md animate-slide-up">
       <iframe src={source} allowFullScreen className="w-full h-[575px] rounded" />
     </div>
   </div>

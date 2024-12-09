@@ -115,7 +115,6 @@ const RegisterForm = () => {
           </button>
         </form>
 
-        {/* Link to Login */}
         <div className="mt-4 text-center">
           <p className="text-gray-300">
             Already have an account?{' '}

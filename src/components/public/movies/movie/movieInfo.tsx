@@ -28,7 +28,7 @@ const MovieInfo = ({
 }: MovieInfoProps) => (
   <div className="absolute bottom-0 p-6 md:p-12 flex flex-col md:flex-row items-end max-w-6xl mx-auto w-full">
     <div className="hidden md:block w-36 md:w-64 transition-transform duration-500 ease-in-out transform hover:scale-105">
-      <img src={process.env.API_URL + poster} alt={title} className="rounded-lg shadow-md object-cover w-full h-auto" />
+      <img src={process.env.API_URL + poster} alt={title} className="rounded shadow-md object-cover w-full h-auto" />
     </div>
     <div className="text-white md:ml-6 flex-1 justify-center items-center text-center md:items-start md:justify-start md:text-start">
       <h1 className="text-3xl md:text-5xl font-bold">{title}</h1>
@@ -59,14 +59,14 @@ const MovieInfo = ({
       <div className="mt-6 flex justify-center md:justify-start gap-4">
         <button
           onClick={onLike}
-          className="px-6 py-2 bg-gradient-to-r from-amber-500 to-amber-600 text-mineshaft-900 font-bold rounded-lg shadow-lg hover:from-amber-600 hover:to-amber-700 hover:scale-105 transition-all duration-300 ease-in-out"
+          className="px-6 py-2 bg-gradient-to-r from-amber-500 to-amber-600 text-mineshaft-900 font-bold rounded shadow-lg hover:from-amber-600 hover:to-amber-700 hover:scale-105 transition-all duration-300 ease-in-out"
         >
           Like Movie
         </button>
         {!toggledVideo && (
           <button
             onClick={onToggleVideo}
-            className="px-6 py-2 bg-gradient-to-r from-gray-600 to-gray-700 text-white font-semibold rounded-lg shadow-md hover:from-gray-700 hover:to-gray-800 hover:scale-105 transition-all duration-300 ease-in-out"
+            className="px-6 py-2 bg-gradient-to-r from-gray-600 to-gray-700 text-white font-semibold rounded shadow-md hover:from-gray-700 hover:to-gray-800 hover:scale-105 transition-all duration-300 ease-in-out"
           >
             WATCH NOW
           </button>

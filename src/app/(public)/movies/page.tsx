@@ -3,38 +3,16 @@
 import { useEffect, useState } from 'react';
 
 import Container from '@components/(shared)/custom/container';
-import MoviesDisplayPagination from '@components/public/movies/display/components/moviesDisplayPagination';
+
+import MoviesDisplay from '@components/public/movies/display';
 import MoviesDisplayFilter from '@components/public/movies/display/components/moviesDisplayFilter';
+import MoviesDisplayPagination from '@components/public/movies/display/components/moviesDisplayPagination';
+
+import IMovie from '@interfaces/iMovie';
+import GENRES from '@utils/genres';
 
 import useDebounce from '@hooks/useDebounce';
-import IMovie from '@interfaces/iMovie';
 import apiServer from '@services/apiServer';
-import MoviesDisplay from '@components/public/movies/display';
-
-const GENRES = [
-  'Action',
-  'Adventure',
-  'Animation',
-  'Biography',
-  'Comedy',
-  'Crime',
-  'Documentary',
-  'Drama',
-  'Family',
-  'Fantasy',
-  'Film-Noir',
-  'History',
-  'Horror',
-  'Music',
-  'Musical',
-  'Mystery',
-  'Romance',
-  'Sci-Fi',
-  'Sport',
-  'Thriller',
-  'War',
-  'Western',
-];
 
 export default function MoviesPage() {
   const [movies, setMovies] = useState<IMovie[]>([]);
