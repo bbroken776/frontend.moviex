@@ -28,7 +28,7 @@ const MovieInfo = ({
 }: MovieInfoProps) => (
   <div className="absolute bottom-0 p-6 md:p-12 flex flex-col md:flex-row items-end max-w-6xl mx-auto w-full">
     <div className="hidden md:block w-36 md:w-64 transition-transform duration-500 ease-in-out transform hover:scale-105">
-      <img src={process.env.API_URL + poster} alt={title} className="rounded shadow-md object-cover w-full h-auto" />
+      <img src={`data:image/png;base64, ${poster}`} alt={title} className="rounded shadow-md object-cover w-full h-auto" />
     </div>
     <div className="text-white md:ml-6 flex-1 justify-center items-center text-center md:items-start md:justify-start md:text-start">
       <h1 className="text-3xl md:text-5xl font-bold">{title}</h1>

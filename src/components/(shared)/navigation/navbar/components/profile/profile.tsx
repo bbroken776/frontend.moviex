@@ -8,7 +8,7 @@ import useAuth from '@hooks/useAuth';
 import ProfileDetails from './profileDetails';
 import ProfileLinkList from './profileLinkList';
 
-const Profile = () => {
+const  Profile = () => {
   const { isAuthenticated, user, logout } = useAuth();
 
   const [isDropdownOpen, setDropdownOpen] = useState(false);

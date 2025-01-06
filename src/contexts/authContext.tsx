@@ -90,10 +90,16 @@ function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   const logout = async (): Promise<void> => {
-    destroyCookie(null, 'moviex.session');
-    setUser(null);
+    try {
+      destroyCookie(null, 'moviex.session', { path: '/' });
+      setUser(null);
 
-    window.location.href = '/';
+      window.location.replace('/');
+      Notification({ message: 'You have successfully logged out', type: 'SUCCESS' });
+    } catch (error) {
+      console.error('Error during logout:', error);
+      Notification({ message: 'Error during logout', type: 'ERROR' });
+    }
   };
 
   return (
