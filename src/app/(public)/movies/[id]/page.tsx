@@ -13,7 +13,6 @@ import IMovie from '@interfaces/iMovie';
 import apiServer from '@services/apiServer';
 import MovieSessionsDisplayFilter from '@components/public/movies/movie/movieSessionsFilter';
 import ICinema from '@interfaces/iCinema';
-import MovieSessions from '@components/public/movies/movie/movieSessions';
 import MovieCinema from '@components/public/movies/movie/movieSessions';
 
 export default function MoviePage() {
@@ -49,9 +48,6 @@ export default function MoviePage() {
 
         setCinemas(session);
         setRegions(cinemasRegions);
-
-        console.log('Cinemas fetched:', session);
-        console.log('Unique regions:', cinemasRegions);
       } catch (err) {
         console.error('Error fetching cinemas:', err);
       }
@@ -69,6 +65,10 @@ export default function MoviePage() {
     setRegionFilter(region);
     console.log('Region filter changed to:', region);
   };
+
+  const filteredCinemas = regionFilter === 'all' 
+    ? cinemas 
+    : cinemas.filter(cinema => cinema.location === regionFilter);
 
   return (
     <Container className="min-h-screen mt-20">
@@ -91,7 +91,7 @@ export default function MoviePage() {
           </MovieBanner>
 
           <MovieSessionsDisplayFilter region={regionFilter} regions={regions} setRegion={handleRegionFilterChange} />
-          {cinemas.length > 0 && cinemas.map((c, index) => <MovieCinema key={index} cinema={c} />)}
+          {filteredCinemas.length > 0 && filteredCinemas.map((c, index) => <MovieCinema key={index} cinema={c} />)}
         </>
       )}
     </Container>

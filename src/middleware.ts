@@ -8,7 +8,7 @@ export default async function middleware(request: NextRequest) {
   const nextPath = request.nextUrl.pathname;
 
   const isAuthPath = ['/auth'].some(path => nextPath.startsWith(path));
-  const isProtectedPath = ['/movies', '/me', '/admin'].some(path => nextPath.startsWith(path));
+  const isProtectedPath = ['/movies', '/checkout', '/me', '/admin'].some(path => nextPath.startsWith(path));
   const isAdminPath = nextPath.startsWith('/admin');
 
   if (!token && isProtectedPath) {

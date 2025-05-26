@@ -6,8 +6,8 @@ export default interface IMovie {
   genres: string[];
   duration: number;
   trailer: string;
-  poster: string
-  banner: string
+  poster: string;
+  banner: string;
 
   createdAt?: Date;
   updatedAt?: Date;

@@ -1,17 +1,19 @@
 'use client';
 
 import Container from '@components/(shared)/custom/container';
+import CheckoutDisplay from '@components/public/checkout';
 import ICinema from '@interfaces/iCinema';
 import ICinemaSession from '@interfaces/iCinemaSession';
 import IMovie from '@interfaces/iMovie';
+import apiServer from '@services/apiServer';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 export default function CheckoutPage() {
   const searchParams = useSearchParams();
-  const movieId = searchParams.get('movieId');
-  const cinemaId = searchParams.get('cinemaId');
-  const sessionId = searchParams.get('sessionId');
+  const movieId = Number(searchParams.get('movieId'));
+  const cinemaId = Number(searchParams.get('cinemaId'));
+  const sessionId = Number(searchParams.get('sessionId'));
 
   const isValid = movieId && cinemaId && sessionId;
   if (!isValid) {
@@ -38,26 +40,51 @@ export default function CheckoutPage() {
     );
   }
 
-  const [movie, setMovie] = useState<IMovie | null>(null);
-  const [cinema, setCinema] = useState<ICinema | null>(null);
-  const [session, setSession] = useState<ICinemaSession | null>(null);
+  const [uMovie, setMovie] = useState<IMovie | null>(null);
+  const [uCinema, setCinema] = useState<ICinema | null>(null);
+  const [uSession, setSession] = useState<ICinemaSession | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
-        
-    }
-  })
+      try {
+        const {
+          data: { movie, cinema, session },
+        } = await apiServer.post('/checkout', {
+          movieId,
+          cinemaId,
+          sessionId,
+        });
+
+        setMovie(movie);
+        setCinema(cinema);
+        setSession(session);
+      } catch (error) {
+        console.error('Error fetching checkout data:', error);
+      }
+    };
+
+    fetchData();
+  }, [uMovie == null]);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-mineshaft-900 text-white">
-      <h1 className="text-4xl font-bold mb-8">Checkout</h1>
-      <p className="text-lg mb-4">This page is under construction.</p>
-      <p className="text-sm text-zinc-400">Please check back later for updates.</p>
-      <div className="mt-8">
-        <p>Movie ID: {movieId}</p>
-        <p>Cinema ID: {cinemaId}</p>
-        <p>Session ID: {sessionId}</p>
-      </div>
-    </div>
+    <Container className="min-h-screen mt-20">
+      {uMovie && uCinema && uSession ? (
+        <CheckoutDisplay movie={uMovie} cinema={uCinema} session={uSession} />
+      ) : (
+        <div className="animate-pulse max-w-4xl mx-auto p-6 bg-mineshaft-900 rounded-lg space-y-6">
+          <div className="h-48 bg-mineshaft-700 rounded-md"></div>
+          <div className="h-8 bg-mineshaft-700 rounded w-2/3 mx-auto"></div>
+          <div className="space-y-4">
+            <div className="h-6 bg-mineshaft-700 rounded w-1/2 mx-auto"></div>
+            <div className="h-6 bg-mineshaft-700 rounded w-1/3 mx-auto"></div>
+          </div>
+          <div className="space-y-4">
+            <div className="h-4 bg-mineshaft-700 rounded w-full"></div>
+            <div className="h-4 bg-mineshaft-700 rounded w-5/6"></div>
+            <div className="h-4 bg-mineshaft-700 rounded w-3/4"></div>
+          </div>
+        </div>
+      )}
+    </Container>
   );
 }

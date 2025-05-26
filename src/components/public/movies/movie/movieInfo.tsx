@@ -33,10 +33,10 @@ const MovieInfo = ({ title, year, duration, genres, description, poster, onToggl
         ))}
       </div>
       <div className="flex flex-wrap justify-center md:justify-start gap-3 text-xs text-amber-300 font-light opacity-90 mt-2">
-        <Badge className="bg-amber-400/100 text-mineshaft-800 border-[1px] border-amber-400 font-extrabold px-3 py-1 rounded">
+        <Badge className="bg-emerald-400/100 text-mineshaft-800 border-[1px] border-emerald-400 font-extrabold px-3 py-1 rounded">
           {duration} mins
         </Badge>
-        <Badge className="bg-amber-400/100 text-mineshaft-800 border-[1px] border-amber-400 font-extrabold px-3 py-1 rounded">
+        <Badge className="bg-emerald-400/100 text-mineshaft-800 border-[1px] border-emerald-400 font-extrabold px-3 py-1 rounded">
           {year}
         </Badge>
       </div>

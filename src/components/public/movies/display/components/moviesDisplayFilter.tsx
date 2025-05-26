@@ -73,16 +73,16 @@ const MoviesDisplayFilter = ({
         <button
           onClick={() => setOrderBy(orderBy === 'likes' ? '' : 'likes')}
           className={`px-2 py-1 rounded font-bold text-sm transition-colors ease-in-out duration-300 ${
-            orderBy === 'likes' ? 'bg-amber-500/10 text-amber-500' : 'bg-transparent text-zinc-100'
-          } hover:bg-amber-500/20 hover:text-amber-500`}
+            orderBy === 'likes' ? 'bg-emerald-500/10 text-emerald-500' : 'bg-transparent text-zinc-100'
+          } hover:bg-emerald-500/20 hover:text-emerald-500`}
         >
           Popular
         </button>
         <button
           onClick={() => setOrderBy(orderBy === 'createdAt' ? '' : 'createdAt')}
           className={`px-2 py-1 rounded font-bold text-sm transition-colors ease-in-out duration-300 ${
-            orderBy === 'createdAt' ? 'bg-amber-500/10 text-amber-500' : 'bg-transparent text-zinc-100'
-          } hover:bg-amber-500/20 hover:text-amber-500`}
+            orderBy === 'createdAt' ? 'bg-emerald-500/10 text-emerald-500' : 'bg-transparent text-zinc-100'
+          } hover:bg-emerald-500/20 hover:text-emerald-500`}
         >
           Newest
         </button>

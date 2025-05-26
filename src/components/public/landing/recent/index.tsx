@@ -11,10 +11,10 @@ import apiServer from '@services/apiServer';
 
 const TitleAndButton = () => (
   <div className="flex justify-between items-center mb-6 bg-mineshaft-900/60 px-4 py-3 rounded shadow-lg">
-    <h1 className="text-4xl font-extrabold tracking-wide text-amber-400">Recent Movies</h1>
+    <h1 className="text-4xl font-extrabold tracking-wide text-emerald-400">Recent Movies</h1>
     <a
       href="/movies"
-      className="px-6 py-2 border border-amber-400 bg-mineshaft-900 text-zinc-100 font-bold text-sm rounded shadow-md transition-colors ease-in-out duration-300 hover:bg-amber-400 hover:text-mineshaft-900"
+      className="px-6 py-2 border border-emerald-400 bg-mineshaft-900 text-zinc-100 font-bold text-sm rounded shadow-md transition-colors ease-in-out duration-300 hover:bg-emerald-400 hover:text-mineshaft-900"
     >
       View More Movies
     </a>

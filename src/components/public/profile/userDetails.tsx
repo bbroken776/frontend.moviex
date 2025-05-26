@@ -52,7 +52,7 @@ const UserDetails = ({ user, onUpdateUser }: UserDetailsProps) => {
   return (
     <div className="bg-mineshaft-900/50 rounded shadow-md p-6 flex flex-col md:flex-row items-center">
       <div className="flex-shrink-0 mb-6 md:mr-6">
-        <div className="bg-yellow-500 rounded px-6 py-6 flex items-center justify-center">
+        <div className="bg-emerald-500 rounded px-6 py-6 flex items-center justify-center">
           <span className="text-9xl font-bold text-gray-900">{userInitials}</span>
         </div>
       </div>
@@ -130,7 +130,7 @@ const UserDetails = ({ user, onUpdateUser }: UserDetailsProps) => {
           {editMode && (
             <button
               onClick={handleSave}
-              className="px-6 py-2 bg-amber-500/20 text-amber-500 border border-amber-500 rounded shadow hover:bg-amber-500 hover:text-zinc-100 hover:font-bold"
+              className="px-6 py-2 bg-emerald-500/20 text-emerald-500 border border-emerald-500 rounded shadow hover:bg-emerald-500 hover:text-zinc-100 hover:font-bold"
             >
               Save
             </button>
