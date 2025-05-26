@@ -1,14 +1,14 @@
 import IMovie from '@interfaces/iMovie';
 
 interface DashboardMovieProps {
-  key: number;
+  index: number;
   movie: IMovie;
   handleDelete: (id: number) => Promise<void>;
 }
 
-const DashboardMovie = ({ key, movie, handleDelete }: DashboardMovieProps) => {
+const DashboardMovie = ({ index, movie, handleDelete }: DashboardMovieProps) => {
   return (
-    <div key={key} className="flex justify-between items-center bg-mineshaft-900/50 px-6 py-4 rounded shadow-lg">
+    <div key={index} className="flex justify-between items-center bg-mineshaft-900/50 px-6 py-4 rounded shadow-lg">
       <div className="grid grid-rows-1 grid-cols-4 gap-4">
         <div className="flex flex-col">
           <h4 className="text-amber-500 font-bold">{movie.title}</h4>
@@ -17,10 +17,6 @@ const DashboardMovie = ({ key, movie, handleDelete }: DashboardMovieProps) => {
         <div className="flex flex-col">
           <h4 className="text-amber-500 font-bold">{movie.year}</h4>
           <span className="text-sm text-zinc-100">Year</span>
-        </div>
-        <div className="flex flex-col">
-          <h4 className="text-amber-500 font-bold">{movie.likes}</h4>
-          <span className="text-sm text-zinc-100">Likes</span>
         </div>
         <div className="flex flex-col">
           <h4 className="text-amber-500 font-bold">
@@ -37,7 +33,7 @@ const DashboardMovie = ({ key, movie, handleDelete }: DashboardMovieProps) => {
           Edit
         </a>
         <button
-          onClick={() => handleDelete(movie.id)}
+          onClick={() => handleDelete(movie.id!)}
           className="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600"
         >
           Delete

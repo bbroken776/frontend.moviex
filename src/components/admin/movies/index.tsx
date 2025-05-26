@@ -5,21 +5,11 @@ import { useRouter } from 'next/navigation';
 
 import Container from '@components/(shared)/custom/container';
 import apiClient from '@services/apiClient';
+import IMovie from '@interfaces/iMovie';
 
-export interface CAUMovie {
-  id?: number;
-  title: string;
-  description: string;
-  year: number;
-  genres: string;
-  duration: number;
-  source: string;
-  poster: Uint8Array | null;
-  banner: Uint8Array | null;
-}
 
 interface CreateANDUpdateMovieProps {
-  movie?: CAUMovie;
+  movie?: IMovie;
 }
 
 const CreateANDUpdateMovie = ({ movie }: CreateANDUpdateMovieProps) => {
@@ -31,9 +21,9 @@ const CreateANDUpdateMovie = ({ movie }: CreateANDUpdateMovieProps) => {
     year: '',
     genres: '',
     duration: '',
-    source: '',
-    poster: null as Uint8Array | null,
-    banner: null as Uint8Array | null,
+    trailer: '',
+    poster: null as string | null, 
+    banner: null as string | null,
   });
 
   useEffect(() => {
@@ -42,9 +32,9 @@ const CreateANDUpdateMovie = ({ movie }: CreateANDUpdateMovieProps) => {
         title: movie.title || '',
         description: movie.description || '',
         year: movie.year ? String(movie.year) : '',
-        genres: movie.genres || '',
+        genres: movie.genres.join(",") || '',
         duration: movie.duration ? String(movie.duration) : '',
-        source: movie.source || '',
+        trailer: movie.trailer || '',
         poster: movie.poster || null,
         banner: movie.banner || null,
       });
@@ -56,14 +46,16 @@ const CreateANDUpdateMovie = ({ movie }: CreateANDUpdateMovieProps) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name } = e.target;
     const file = e.target.files ? e.target.files[0] : null;
 
     if (file) {
-      const arrayBuffer = await file.arrayBuffer();
-      const bytes = new Uint8Array(arrayBuffer);
-      setFormData((prev) => ({ ...prev, [name]: bytes }));
+      const reader = new FileReader();
+      reader.onload = () => {
+        setFormData((prev) => ({ ...prev, [name]: reader.result as string }));
+      };
+      reader.readAsDataURL(file);
     }
   };
 
@@ -71,28 +63,33 @@ const CreateANDUpdateMovie = ({ movie }: CreateANDUpdateMovieProps) => {
     e.preventDefault();
 
     try {
+      const stripBase64Prefix = (data: string | null) => {
+        if (data && data.startsWith('data:image')) {
+          return data.split(',')[1];
+        }
+        return data;
+      };
+
       const payload = {
         title: formData.title,
         description: formData.description,
         year: Number(formData.year),
         genres: formData.genres,
         duration: Number(formData.duration),
-        source: formData.source,
-        poster: formData.poster,
-        banner: formData.banner,
+        trailer: formData.trailer,
+        poster: stripBase64Prefix(formData.poster),
+        banner: stripBase64Prefix(formData.banner),
       };
 
+      console.log('Payload:', payload);
+
       if (movie?.id) {
-        await apiClient.put(`/movies/${movie.id}`, payload, {
-          headers: { 'Content-Type': 'application/json' },
-        });
+        await apiClient.patch(`/movies/${movie.id}`, payload);
       } else {
-        await apiClient.post('/movies', payload, {
-          headers: { 'Content-Type': 'application/json' },
-        });
+        await apiClient.post('/movies', payload);
       }
 
-      router.push('/admin/movies');
+      router.push('/admin');
     } catch (error) {
       console.error('Error saving movie:', error);
     }
@@ -108,7 +105,6 @@ const CreateANDUpdateMovie = ({ movie }: CreateANDUpdateMovieProps) => {
           {movie ? 'Edit Movie' : 'Create Movie'}
         </h1>
 
-        {/* Text Fields */}
         <div>
           <label className="block text-sm text-zinc-100 mb-1">Title</label>
           <input
@@ -132,7 +128,6 @@ const CreateANDUpdateMovie = ({ movie }: CreateANDUpdateMovieProps) => {
           ></textarea>
         </div>
 
-        {/* Other Fields */}
         <div>
           <label className="block text-sm text-zinc-100 mb-1">Genres (comma-separated)</label>
           <input
@@ -171,11 +166,11 @@ const CreateANDUpdateMovie = ({ movie }: CreateANDUpdateMovieProps) => {
         </div>
 
         <div>
-          <label className="block text-sm text-zinc-100 mb-1">Source (Video URL)</label>
+          <label className="block text-sm text-zinc-100 mb-1">Trailer (Video URL)</label>
           <input
             type="text"
-            name="source"
-            value={formData.source}
+            name="trailer"
+            value={formData.trailer}
             onChange={handleChange}
             className="w-full px-4 py-2 bg-mineshaft-800/40 text-zinc-100 rounded outline-none"
             required

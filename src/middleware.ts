@@ -7,8 +7,8 @@ export default async function middleware(request: NextRequest) {
   const token = request.cookies.get('moviex.session')?.value;
   const nextPath = request.nextUrl.pathname;
 
-  const isAuthPath = ['/auth'].some((path) => nextPath.startsWith(path));
-  const isProtectedPath = ['/me', '/admin'].some((path) => nextPath.startsWith(path));
+  const isAuthPath = ['/auth'].some(path => nextPath.startsWith(path));
+  const isProtectedPath = ['/movies', '/me', '/admin'].some(path => nextPath.startsWith(path));
   const isAdminPath = nextPath.startsWith('/admin');
 
   if (!token && isProtectedPath) {
@@ -42,5 +42,5 @@ async function hasAuthority(token: string): Promise<boolean> {
 }
 
 export const config = {
-  matcher: ['/auth/:path*', '/me/:path*', '/admin/:path*'],
+  matcher: ['/:path*'],
 };

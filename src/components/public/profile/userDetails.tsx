@@ -6,7 +6,7 @@ import Notification from '@components/(shared)/custom/notification/notification'
 
 interface UserDetailsProps {
   user: IUser | null;
-  onUpdateUser: (updatedUser: IUser) => void;
+  onUpdateUser?: (updatedUser: IUser) => void;
 }
 
 const UserDetails = ({ user, onUpdateUser }: UserDetailsProps) => {
@@ -32,7 +32,7 @@ const UserDetails = ({ user, onUpdateUser }: UserDetailsProps) => {
 
         if (status === 200) {
           setEditMode(false);
-          onUpdateUser(updatingUser);
+          if (onUpdateUser) onUpdateUser(updatingUser);
           Notification({ message: message! ?? 'Profile updated successfully', type: 'SUCCESS' });
         }
       }

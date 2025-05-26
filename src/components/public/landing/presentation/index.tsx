@@ -17,7 +17,7 @@ const LandingPresentation = () => {
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        const response = await apiServer.get('/movies/most-liked');
+        const response = await apiServer.get('/movies/recent');
         const { movies } = response.data;
 
         setMovies(movies);
@@ -35,6 +35,7 @@ const LandingPresentation = () => {
 
     return () => clearInterval(interval);
   }, [movies.length]);
+
 
   const currentMovie = movies[currentMovieIndex];
 
@@ -63,7 +64,6 @@ const LandingPresentation = () => {
                 genres={currentMovie.genres}
                 duration={currentMovie.duration}
                 description={currentMovie.description}
-                likes={currentMovie.likes}
               />
             </div>
           </motion.div>

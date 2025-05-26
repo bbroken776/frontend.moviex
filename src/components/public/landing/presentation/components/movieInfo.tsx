@@ -7,10 +7,9 @@ interface MovieInfoProps {
   genres: string[];
   duration: number;
   year: number;
-  likes: number;
 }
 
-const MovieInfo = ({ title, description, genres, duration, year, likes }: MovieInfoProps) => (
+const MovieInfo = ({ title, description, genres, duration, year }: MovieInfoProps) => (
   <div className="flex flex-col items-center md:items-start text-center md:text-start">
     <h1 className="text-6xl font-serif text-zinc-100 font-extrabold r">{title}</h1>
 
@@ -34,10 +33,6 @@ const MovieInfo = ({ title, description, genres, duration, year, likes }: MovieI
 
       <Badge className="bg-amber-400/100 text-mineshaft-800 border-[1px] border-amber-400 font-extrabold px-3 py-1 rounded">
         {year}
-      </Badge>
-
-      <Badge className="bg-amber-400/100 text-mineshaft-800 border-[1px] border-amber-400 font-extrabold px-3 py-1 rounded">
-        {likes} likes
       </Badge>
     </div>
 

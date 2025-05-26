@@ -3,9 +3,10 @@ import { parseCookies } from 'nookies';
 
 const apiClient = axios.create({
   baseURL: process.env.API_URL,
+  withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
-  }
+  },
 });
 
 apiClient.interceptors.request.use(

@@ -19,8 +19,7 @@ const MoviesDisplay = ({ isLoading, movies }: MoviesDisplayProps) => {
               title={movie.title}
               year={movie.year}
               genres={movie.genres}
-              likes={movie.likes}
-              id={movie.id}
+              id={movie.id!}
               duration={movie.duration}
             />
           ))}

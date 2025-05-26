@@ -7,8 +7,6 @@ export default interface IUser {
   email: string;
   role: 'USER' | 'ADMIN';
 
-  likedMovies?: IMovie[];
-
   createdAt: string;
   updatedAt: string;
 }

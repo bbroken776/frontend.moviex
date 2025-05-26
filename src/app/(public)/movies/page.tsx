@@ -64,8 +64,6 @@ export default function MoviesPage() {
       filtered = filtered.sort((a, b) => b.year - a.year);
     } else if (orderBy === 'duration') {
       filtered = filtered.sort((a, b) => b.duration - a.duration);
-    } else if (orderBy === 'likes') {
-      filtered = filtered.sort((a, b) => b.likes - a.likes);
     } else if (orderBy === 'createdAt') {
       filtered = filtered.sort((a, b) => new Date(b.createdAt!).getTime() - new Date(a.createdAt!).getTime());
     }

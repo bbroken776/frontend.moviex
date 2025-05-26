@@ -3,12 +3,11 @@ import Badge from '@components/(shared)/custom/badge';
 interface MovieInfoProps {
   title: string;
   genres: string[];
-  likes: number;
   year: number;
   duration: number;
 }
 
-const MovieInfo = ({ title, genres, likes, year, duration }: MovieInfoProps) => (
+const MovieInfo = ({ title, genres, year, duration }: MovieInfoProps) => (
   <div className="absolute bottom-0 left-0 right-0 flex flex-col items-center md:items-start text-center md:text-start px-4 py-6 gap-3 bg-gradient-to-t from-mineshaft-950/85 to-transparent opacity-0 group-hover:opacity-100 filter blur-8 group-hover:blur-0 transition-all ease-in-out duration-300">
     <h1 className="text-2xl text-zinc-100 font-extrabold r text-center md:text-left truncate w-full">
       {title}
@@ -34,10 +33,6 @@ const MovieInfo = ({ title, genres, likes, year, duration }: MovieInfoProps) => 
 
       <Badge className="bg-amber-400/100 text-mineshaft-800 border-[1px] border-amber-400 font-extrabold px-3 py-1 rounded">
         {year}
-      </Badge>
-
-      <Badge className="bg-amber-400/100 text-mineshaft-800 border-[1px] border-amber-400 font-extrabold px-3 py-1 rounded">
-        {likes} likes
       </Badge>
     </div>
   </div>

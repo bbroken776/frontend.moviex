@@ -1,16 +1,13 @@
 export default interface IMovie {
-  id: number;
+  id?: number;
   title: string;
   description: string;
-  genres: string[];
   year: number;
+  genres: string[];
   duration: number;
-
-  source: string;
-  poster: string;
-  banner: string;
-
-  likes: number;
+  trailer: string;
+  poster: string
+  banner: string
 
   createdAt?: Date;
   updatedAt?: Date;

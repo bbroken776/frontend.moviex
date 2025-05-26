@@ -62,7 +62,7 @@ const DashboardMovies = () => {
 
       <div className="grid grid-cols-1 gap-4">
         {filteredMovies.map((movie, index) => (
-          <DashboardMovie key={index} movie={movie} handleDelete={() => handleDelete(movie.id)} />
+          <DashboardMovie key={index} index={index} movie={movie} handleDelete={() => handleDelete(movie.id)} />
         ))}
       </div>
 

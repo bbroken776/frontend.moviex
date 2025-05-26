@@ -46,26 +46,25 @@ const LandingRecent = () => {
       <TitleAndButton />
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {isLoading || movies.length < 1
+        {isLoading || movies?.length < 1
           ? [...Array(10)].map((_, index) => (
               <div key={index}>
                 <MovieSkeletonLoader />
               </div>
             ))
           : [
-              ...movies.map(movie => (
+              ...movies?.map(movie => (
                 <Movie
                   poster={movie.poster}
                   title={movie.title}
                   year={movie.year}
-                  genres={movie.genres}
-                  likes={movie.likes}
-                  id={movie.id}
+                  genres={[]}
+                  id={movie.id!}
                   duration={movie.duration}
                   key={movie.title}
                 />
               )),
-              ...[...Array(Math.max(0, 10 - movies.length))].map((_, index) => (
+              ...[...Array(Math.max(0, 10 - (movies?.length ?? 0)))].map((_, index) => (
                 <div key={index} className="relative group">
                   <MovieSkeletonLoader />
                 </div>
